@@ -10,33 +10,33 @@ interface TimelineSection {
 
 const timelineSections: TimelineSection[] = [
   {
-    year: "Year 1",
-    title: "10th Standard Sparks ✨",
-    description: "Where it all began... Two hearts discovering something special in the hallways of our school. The shy glances, the nervous smiles, and the beginning of our beautiful story.",
+    year: "Year 1: 10th Std",
+    title: "10th Standard Butterflies ✨",
+    description: "Where it all began... Two hearts discovering something special in the hallways of our school. The shy glances, the nervous smiles, and the beginning of our beautiful story. October 11, 2016 - the day that changed everything.",
     color: "from-primary/30 to-secondary/30",
   },
   {
-    year: "Year 2",
-    title: "11th-12th Whispers 💭",
-    description: "From October 11th birthdays to October 14th anniversaries, every moment became a treasure. Love letters passed in class, promises whispered under the stars.",
+    year: "Year 2: 11th-12th",
+    title: "Our Eternal Octobers 💭",
+    description: "From October 11th birthdays to October 14th anniversaries, every moment became a treasure. Love letters passed in class, promises whispered under the stars. That rainy Oct 11 confession that made my heart skip a beat.",
     color: "from-secondary/30 to-accent/30",
   },
   {
-    year: "Year 3",
-    title: "College Vows 💍",
-    description: "Growing together, dreaming together. From study sessions to life plans, from campus grounds to forever promises. Our love matured like fine wine.",
+    year: "Year 3: College",
+    title: "College Dreams & Vows 💍",
+    description: "Growing together, dreaming together. From study sessions to life plans, from campus grounds to forever promises. Our love matured like fine wine, deeper with every shared moment.",
     color: "from-accent/30 to-primary/30",
   },
   {
-    year: "Year 4",
-    title: "Wedding Bells 💒",
-    description: "The day we became one. Surrounded by love, we promised forever. From that magical day forward, every sunrise brings new reasons to fall in love again.",
+    year: "Year 4: Wedding",
+    title: "Wedding Bells & Forever 💒",
+    description: "The day we became one. Surrounded by love, we promised forever under the stars. From that magical day forward, every sunrise brings new reasons to fall in love again.",
     color: "from-primary/30 to-destructive/30",
   },
   {
-    year: "Now",
-    title: "Forever Together 💕",
-    description: "Four years of marriage, countless memories, and infinite love. From school sweethearts to life partners, our journey continues to be the greatest adventure.",
+    year: "Now: 4 Years",
+    title: "Four Years of Forever 💕",
+    description: "Four years of marriage, countless memories, and infinite love. From school sweethearts to life partners, our journey continues to be the greatest adventure. Here's to many more Octobers together!",
     color: "from-destructive/30 to-secondary/30",
   },
 ];
@@ -62,11 +62,17 @@ export const ParallaxTimeline = () => {
     <div ref={containerRef} className="relative py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Our Journey Unfolds
+          <h2 
+            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Our Eternal Octobers
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Scroll to relive every magical moment
+          <p className="text-2xl text-muted-foreground">
+            Scroll to relive every magical moment of our journey
+          </p>
+          <p className="text-lg text-accent">
+            From 10th Standard to Forever 💕
           </p>
         </div>
 
@@ -117,21 +123,26 @@ export const ParallaxTimeline = () => {
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-secondary romantic-glow pulse-slow" />
                 </div>
 
-                {/* Photo placeholder */}
+                {/* Photo placeholder with peeling page effect */}
                 <div className="w-full md:w-5/12">
-                  <div className="relative aspect-square rounded-3xl overflow-hidden romantic-glow group">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${section.color} opacity-40`} />
-                    <div className="absolute inset-0 flex items-center justify-center text-center p-8 bg-background/40 backdrop-blur-sm group-hover:bg-background/20 transition-all duration-500">
+                  <div className="relative aspect-square rounded-3xl overflow-hidden romantic-glow group cursor-pointer">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${section.color} opacity-40 transition-all duration-500 group-hover:opacity-60`} />
+                    <div className="absolute inset-0 flex items-center justify-center text-center p-8 bg-background/40 backdrop-blur-sm group-hover:bg-background/20 transition-all duration-500 group-hover:transform group-hover:rotate-3">
                       <div className="space-y-4">
-                        <div className="text-6xl animate-float">📸</div>
-                        <p className="text-lg font-semibold text-foreground">
-                          Add Your Photo Here
+                        <div className="text-7xl animate-float">📸</div>
+                        <p className="text-xl font-semibold text-foreground">
+                          Our Memory
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          Upload a memory from {section.year}
+                          {section.year}
                         </p>
+                        <div className="flex gap-2 justify-center text-2xl">
+                          {index % 3 === 0 ? '💑' : index % 3 === 1 ? '💕' : '💖'}
+                        </div>
                       </div>
                     </div>
+                    {/* Peeling corner effect */}
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-foreground/10 to-transparent transform rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-500" />
                   </div>
                 </div>
               </div>
@@ -140,15 +151,26 @@ export const ParallaxTimeline = () => {
         </div>
 
         {/* Final message */}
-        <div className="mt-32 text-center space-y-6 animate-fade-in">
-          <h3 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+        <div className="mt-32 text-center space-y-8 animate-fade-in pb-20">
+          <h3 
+            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
             To Many More Years of Love
           </h3>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-2xl text-foreground max-w-3xl mx-auto leading-relaxed">
             Happy 4th Anniversary and Happy Birthday to the most amazing person in my life. 
+            From that first glance in 10th standard to four beautiful years of marriage,
+            every moment with you has been magical. 
+          </p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Here's to infinity and beyond together! 💕
           </p>
-          <div className="text-6xl animate-float">💑</div>
+          <div className="flex justify-center gap-8 text-6xl">
+            <div className="animate-float">💑</div>
+            <div className="animate-float" style={{ animationDelay: '1s' }}>💖</div>
+            <div className="animate-float" style={{ animationDelay: '2s' }}>✨</div>
+          </div>
         </div>
       </div>
     </div>

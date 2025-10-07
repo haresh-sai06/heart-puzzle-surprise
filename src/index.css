@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Romantic Night Sky Palette */
+    /* Enhanced Romantic Palette with Peach & Lavender */
     --background: 240 45% 8%;
     --foreground: 340 100% 98%;
 
@@ -18,17 +18,20 @@ All colors MUST be HSL.
     --popover: 260 45% 10%;
     --popover-foreground: 340 100% 98%;
 
-    --primary: 340 82% 58%;
+    --primary: 340 82% 58%; /* Blush pink */
     --primary-foreground: 340 100% 98%;
 
-    --secondary: 280 60% 55%;
+    --secondary: 280 60% 55%; /* Lavender */
     --secondary-foreground: 340 100% 98%;
 
     --muted: 260 35% 20%;
     --muted-foreground: 340 30% 75%;
 
-    --accent: 45 95% 65%;
+    --accent: 45 95% 65%; /* Golden amber */
     --accent-foreground: 240 45% 8%;
+
+    --peach: 25 100% 85%; /* Soft peach */
+    --lavender: 280 70% 80%; /* Deep lavender */
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 340 100% 98%;
@@ -45,11 +48,13 @@ All colors MUST be HSL.
     --gradient-rose: linear-gradient(135deg, hsl(340 82% 58%) 0%, hsl(350 90% 65%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(45 95% 65%) 0%, hsl(35 100% 70%) 100%);
     --gradient-sunset: linear-gradient(180deg, hsl(340 82% 58%) 0%, hsl(30 90% 60%) 100%);
+    --gradient-peach-lavender: radial-gradient(circle at center, hsl(25 100% 85% / 0.7) 0%, hsl(280 70% 80% / 0.7) 100%);
     
     /* Magical Effects */
     --glow-pink: 0 0 30px hsl(340 82% 58% / 0.6);
     --glow-gold: 0 0 40px hsl(45 95% 65% / 0.5);
     --glow-aurora: 0 0 60px hsl(280 60% 55% / 0.4);
+    --glow-peach: 0 0 40px hsl(25 100% 85% / 0.5);
     --shadow-romantic: 0 20px 60px -15px hsl(340 82% 58% / 0.4);
     
     /* Transitions */
