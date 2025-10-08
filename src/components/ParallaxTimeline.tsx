@@ -238,3 +238,5 @@ export const ParallaxTimeline = () => {
     </div>
   );
 };
+
+export default ParallaxTimeline;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Particles from "./ui/Particles";
+import { Link } from "react-router-dom";
 // Import each photo separately for reliable loading in React
 import Picture1 from "@/assets/our-pics/image1.jpeg"; // Year 1
 import Picture2 from "@/assets/our-pics/image2.jpeg"; // Year 2
@@ -15,7 +16,7 @@ interface GalleryItem {
   id: string;
   type: "image" | "video";
   src: any; // Imported image or video module
-  thumbnail?: string; // Optional thumbnail for videos
+  thumbnail?: any; // Optional thumbnail for videos
   year: string;
   title: string;
   description: string;
@@ -95,10 +96,16 @@ const Album = () => {
     setSelectedItem(null);
   };
 
+  // Helper to get src string for images/videos/thumbnails
+  const getSrc = (media: any) => {
+    if (typeof media === 'string') return media;
+    return media?.src || media?.default || media;
+  };
+
   return (
     <div className="relative min-h-screen py-20 overflow-hidden bg-black">
       {/* Particles background */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <Particles
           particleColors={['#ff69b4', '#ff1493']}
           particleCount={600}
@@ -134,22 +141,23 @@ const Album = () => {
             >
               {item.type === "image" ? (
                 <img
-                  src={item.src}
+                  src={getSrc(item.src)}
                   alt={item.title}
                   className="w-full h-64 md:h-80 object-cover rounded-2xl"
                 />
               ) : (
                 <video
-                  src={item.src}
-                  poster={item.thumbnail}
+                  src={getSrc(item.src)}
+                  poster={getSrc(item.thumbnail)}
                   className="w-full h-64 md:h-80 object-cover rounded-2xl"
                   muted
+                  preload="metadata"
                 >
                   Your browser does not support the video tag.
                 </video>
               )}
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-4">
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-4 pointer-events-none">
                 <div className="w-full">
                   <div className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${item.color} text-xs font-bold text-white mb-2`}>
                     {item.year}
@@ -160,7 +168,7 @@ const Album = () => {
               </div>
               {/* Play icon for videos */}
               {item.type === "video" && (
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="bg-white/20 rounded-full p-4 text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     ▶️
                   </div>
@@ -169,6 +177,15 @@ const Album = () => {
             </div>
           ))}
         </div>
+
+        {/* Back to Home Button */}
+<div className="text-center pb-20">
+  <Link to="/?skipIntro=true">
+    <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-lg rounded-full romantic-glow hover:scale-105 transition-all duration-300 cursor-pointer">
+      Back to Our Journey 💕
+    </div>
+  </Link>
+</div>
       </div>
 
       {/* Modal for full view */}
@@ -184,14 +201,14 @@ const Album = () => {
             <div className="flex flex-col items-center space-y-4">
               {selectedItem.type === "image" ? (
                 <img
-                  src={selectedItem.src}
+                  src={getSrc(selectedItem.src)}
                   alt={selectedItem.title}
                   className="max-w-full max-h-[80vh] object-contain rounded-2xl romantic-glow"
                 />
               ) : (
                 <video
-                  src={selectedItem.src}
-                  poster={selectedItem.thumbnail}
+                  src={getSrc(selectedItem.src)}
+                  poster={getSrc(selectedItem.thumbnail)}
                   controls
                   className="max-w-full max-h-[80vh] object-contain rounded-2xl"
                   autoPlay

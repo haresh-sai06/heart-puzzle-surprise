@@ -267,3 +267,5 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
     </div>
   );
 };
+
+export default HeroSection;
