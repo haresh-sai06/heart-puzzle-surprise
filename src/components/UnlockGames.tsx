@@ -101,7 +101,15 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-background/95 backdrop-blur-sm overflow-y-auto py-8">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative">
+        {/* Skip button */}
+        <button
+          onClick={onComplete}
+          className="absolute top-0 right-4 px-4 py-2 text-white/60 hover:text-white/90 text-sm transition-colors duration-300 underline decoration-dotted"
+        >
+          Skip for now →
+        </button>
+
         {/* Progress bar as growing vine */}
         <div className="mb-8">
           <div className="relative h-2 bg-muted rounded-full overflow-hidden max-w-md mx-auto">
