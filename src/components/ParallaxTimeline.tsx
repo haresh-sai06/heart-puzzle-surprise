@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Card } from "@/components/ui/card";
 import Particles from "./ui/Particles";
-import { Link } from "react-router-dom"; // Switch to React Router Link
+import { Link } from "react-router-dom";
 // Import each photo separately for reliable loading in React
 import Picture1 from "@/assets/our-pics/image1.jpeg"; // Year 1
 import Picture2 from "@/assets/our-pics/image2.jpeg"; // Year 2
@@ -56,9 +56,58 @@ const timelineSections: TimelineSection[] = [
   },
 ];
 
+// Love note phrases from timeline
+const loveNotePhrases = [
+  "hearts fluttering like autumn leaves in October wind",
+  "Your smile lit up my world on that fateful October 11, 2016",
+  "Secret notes folded in palms, promises sealed in rainy Octobers",
+  "From birthday whispers on the 11th to anniversary vows on the 14th",
+  "every moment wove our souls closer, deeper into love's gentle embrace",
+  "Campus paths trodden together, futures painted in shared dreams",
+  "Laughter echoing through libraries, love blooming like spring cherry blossoms",
+  "our bond, unbreakable, timeless",
+  "In a cascade of petals and promises, we became one",
+  "we whispered 'forever'—a vow etched in the stars",
+  "Four years of sunrises shared, storms weathered hand in hand",
+  "our love story unfolds like a cherished novel",
+  "each chapter more beautiful than the last",
+];
+
+const generateLoveNote = (index: number) => {
+  const hour = new Date().getHours();
+  let timeLabel = "";
+  let prefix = "";
+  
+  if (hour < 12) {
+    timeLabel = "Good Morning, My Love ☀️";
+    prefix = "As dawn breaks, I think of how ";
+  } else if (hour < 17) {
+    timeLabel = "Afternoon Reverie 🌸";
+    prefix = "In this quiet moment, I remember ";
+  } else if (hour < 20) {
+    timeLabel = "Evening Glow 🌅";
+    prefix = "As twilight descends, my heart whispers of ";
+  } else {
+    timeLabel = "Good Night, My Forever 🌙";
+    prefix = "Under starlight, I dream of ";
+  }
+  
+  const phrase = loveNotePhrases[index % loveNotePhrases.length];
+  return {
+    timeLabel,
+    text: `${prefix}${phrase}...`,
+  };
+};
+
 export const ParallaxTimeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [loveNotes, setLoveNotes] = useState(() => 
+    Array.from({ length: 10 }, (_, i) => generateLoveNote(i))
+  );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +121,36 @@ export const ParallaxTimeline = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const loadMoreNotes = useCallback(() => {
+    if (isLoading || loveNotes.length >= 50) return;
+    
+    setIsLoading(true);
+    setTimeout(() => {
+      const newNotes = Array.from({ length: 5 }, (_, i) => 
+        generateLoveNote(loveNotes.length + i)
+      );
+      setLoveNotes(prev => [...prev, ...newNotes]);
+      setIsLoading(false);
+    }, 500);
+  }, [isLoading, loveNotes.length]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadMoreNotes();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [loadMoreNotes]);
 
   return (
     <div ref={containerRef} className="relative min-h-screen py-20 overflow-hidden">
@@ -204,6 +283,51 @@ export const ParallaxTimeline = () => {
           </div>
         </div>
 
+        {/* Infinite Scroll Love Letters */}
+        <div className="mt-20 max-w-4xl mx-auto space-y-8 pb-20">
+          <h3 
+            className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+          >
+            Whispers from Our Novel 💌
+          </h3>
+          <div 
+            ref={scrollContainerRef}
+            className="max-h-96 overflow-y-auto space-y-4 px-4"
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#f472b6 transparent'
+            }}
+          >
+            {loveNotes.map((note, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 romantic-glow animate-fade-in"
+                style={{
+                  animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`,
+                }}
+              >
+                <div className="text-xs text-rose-300 mb-2 font-semibold">{note.timeLabel}</div>
+                <p 
+                  className="text-white/90 italic leading-relaxed typing-animation"
+                  style={{
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  {note.text}
+                </p>
+              </div>
+            ))}
+            <div ref={sentinelRef} className="h-4" />
+            {isLoading && (
+              <div className="text-center text-rose-300 py-4">
+                Loading more whispers... 💕
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* View Album Button */}
         <div className="text-center pb-20 z-50">
           <Link to="/album">
@@ -233,6 +357,22 @@ export const ParallaxTimeline = () => {
         @keyframes peel {
           0%, 100% { transform: rotate(45deg) translateX(8px) translateY(-8px); }
           50% { transform: rotate(45deg) translateX(6px) translateY(-6px); }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(4px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typing {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+        @keyframes blink {
+          50% { border-color: transparent; }
+        }
+        .typing-animation {
+          overflow: hidden;
+          white-space: nowrap;
+          animation: typing 2s steps(40, end), blink 0.75s step-end infinite;
         }
       `}</style>
     </div>
