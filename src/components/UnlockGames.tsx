@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import Prism from "./ui/Prism";
 
 interface UnlockGamesProps {
   onComplete: () => void;
@@ -100,8 +101,26 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
   const progress = (currentLevel / 3) * 100;
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-background/95 backdrop-blur-sm overflow-y-auto py-8">
-      <div className="container mx-auto px-4 relative">
+    <div className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto py-8">
+      {/* Prism background */}
+      <div className="absolute inset-0 z-0">
+        <Prism
+          animationType="3drotate"
+          glow={1.5}
+          noise={0.3}
+          transparent={false}
+          scale={3.5}
+          hueShift={5.5}
+          colorFrequency={1.2}
+          bloom={1.3}
+          timeScale={0.3}
+        />
+      </div>
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 z-10 bg-black/30 backdrop-blur-sm" />
+
+      <div className="container mx-auto px-4 relative z-20">
         {/* Skip button */}
         <button
           onClick={onComplete}
