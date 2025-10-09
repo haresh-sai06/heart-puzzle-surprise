@@ -7,10 +7,38 @@ import Picture2 from "@/assets/our-pics/image2.jpeg"; // Year 2
 import Picture3 from "@/assets/our-pics/image3.jpeg"; // Year 3
 import Picture4 from "@/assets/our-pics/image4.jpeg"; // Year 4
 import Picture5 from "@/assets/our-pics/image5.jpeg"; // Year 5
+import Picture8 from "@/assets/our-pics/image8.jpeg"; // Extra
+import Picture9 from "@/assets/our-pics/image9.jpeg"; // Extra
+import Picture10 from "@/assets/our-pics/image10.jpeg"; // Extra
+import Picture11 from "@/assets/our-pics/image11.jpeg"; // Extra
+import Picture12 from "@/assets/our-pics/image12.jpeg"; // Extra  
+import Picture13 from "@/assets/our-pics/image13.jpeg"; // Extra
+import Picture14 from "@/assets/our-pics/image14.jpeg"; // Extra
+import Picture15 from "@/assets/our-pics/image15.jpeg"; // Extra    
+import Picture16 from "@/assets/our-pics/image16.jpeg"; // Extra
+import Picture17 from "@/assets/our-pics/image17.jpeg"; // Extra
+import Picture18 from "@/assets/our-pics/image18.jpeg"; // Extra
+import Picture19 from "@/assets/our-pics/image19.jpeg"; // Extra  
+import Picture20 from "@/assets/our-pics/image20.jpeg"; // Extra
+import Picture21 from "@/assets/our-pics/image21.jpeg"; // Extra
+import Picture22 from "@/assets/our-pics/image22.jpeg"; // Extra
+import Picture23 from "@/assets/our-pics/image23.jpeg"; // Extra
+import Picture24 from "@/assets/our-pics/image24.png"; // Year 4 Thumbnail for video
+import Picture25 from "@/assets/our-pics/image25.png"; // Extra
+import Picture26 from "@/assets/our-pics/image26.png"; // Extra
+import Picture27 from "@/assets/our-pics/image27.png"; // Extra
+import Picture28 from "@/assets/our-pics/image28.png"; // Extra
+import Picture29 from "@/assets/our-pics/image29.png"; // Extra
+import Picture30 from "@/assets/our-pics/image30.png"; // Extra
 
 // Assuming some video assets; replace paths as needed
-import Video1 from "@/assets/our-videos/SIH.pptx.mp4"; // Example video 1
-import Video2 from "@/assets/our-videos/lv_0_20250927142737 (1).mp4"; // Example video 2
+import Video1 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.32.27 AM.mp4"; // Example video 1
+import Video2 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.33.30 AM.mp4";
+import Video3 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.46.23 AM.mp4";
+import Video4 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.47.06 AM.mp4";
+import Video5 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.48.35 AM.mp4";
+import Video6 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.48.43 AM.mp4";
+import Video7 from "@/assets/our-videos/WhatsApp Video 2025-10-08 at 11.46.23 AM (1).mp4";
 
 interface GalleryItem {
   id: string;
@@ -29,17 +57,17 @@ const galleryItems: GalleryItem[] = [
     type: "image",
     src: Picture1,
     year: "Year 1: 10th Std Sparks",
-    title: "Butterflies in the Hallways ✨",
-    description: "It began with a glance across the classroom, hearts fluttering like autumn leaves in October wind.",
+    title: "Our first meet at a marriage ✨",
+    description: "After lots and lots of eagerness to meet each other, here we go (OUR FIRST MEET)!!.",
     color: "from-rose-400/20 to-pink-400/20",
   },
   {
     id: "2",
     type: "image",
     src: Picture2,
-    year: "Year 2: Whispers & Promises",
-    title: "Rainy Confessions Under Stars 💭",
-    description: "Secret notes folded in palms, promises sealed in rainy Octobers.",
+    year: "Year 2: Our First date ☔",
+    title: "First meet at Hotel ☕",
+    description: "Although we've become regular customers for this hotel, every visit feels like our first date ☕.",
     color: "from-pink-400/20 to-violet-400/20",
   },
   {
@@ -48,17 +76,17 @@ const galleryItems: GalleryItem[] = [
     src: Picture3,
     year: "Year 3: College Vows",
     title: "Dreams Shared, Hands Entwined 💍",
-    description: "Campus paths trodden together, futures painted in shared dreams.",
+    description: "Look at you, smiling like an Angel.",
     color: "from-violet-400/20 to-indigo-400/20",
   },
   {
     id: "4",
     type: "video",
     src: Video1,
-    thumbnail: Picture4, // Use a photo as thumbnail or provide actual
-    year: "Year 4: Wedding Whispers",
-    title: "Anniversary Dance 💃",
-    description: "Our first dance under the stars, captured in motion.",
+    thumbnail: Picture25, // Use a photo as thumbnail or provide actual
+    year: "Year 4: Eternal Warmth",
+    title: "Every Hug, A Forever Promise 🤍",
+    description: "Your eyes still have the same magic they did the first time we met.",
     color: "from-indigo-400/20 to-rose-400/20",
   },
   {
@@ -74,17 +102,218 @@ const galleryItems: GalleryItem[] = [
     id: "6",
     type: "video",
     src: Video2,
-    thumbnail: Picture3, // Use a photo as thumbnail
+    thumbnail: Picture26, // Use a photo as thumbnail
+    year: "Now: Our Forever Chapter",
+    title: "Bound by Love, Defined by Us 💫",
+    description: "No timeline could ever capture how timeless you are to me.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "7",
+    type: "image",
+    src: Picture8,
+    year: "Forever & Always",
+    title: "You, Me & Infinite Tomorrows 💖",
+    description: "Every memory with you feels like my favorite story coming true.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "8",
+    type: "image",
+    src: Picture9,
     year: "Special Moments",
-    title: "Wedding Highlights 🎥",
+    title: "Our Love Highlights 🎥",
     description: "Relive the magic of our vows in this heartfelt montage.",
     color: "from-pink-400/20 to-violet-400/20",
   },
+  {
+    id: "9",
+    type: "image",
+    src: Picture10,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "11",
+    type: "image",
+    src: Picture11,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "12",
+    type: "image",
+    src: Picture12,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "13",
+    type: "image",
+    src: Picture13,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "14",
+    type: "image",
+    src: Picture14,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "15",
+    type: "image",
+    src: Picture15,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "16",
+    type: "image",
+    src: Picture16,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "17",
+    type: "image",
+    src: Picture17,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "18",
+    type: "image",
+    src: Picture18,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "19",
+    type: "image",
+    src: Picture19,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "20",
+    type: "image",
+    src: Picture20,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "21",
+    type: "image",
+    src: Picture21,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "22",
+    type: "image",
+    src: Picture22,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "23",
+    type: "image",
+    src: Picture23,
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "24",
+    type: "video",
+    src: Video3,
+    thumbnail: Picture24, // Use a photo as thumbnail or provide actual
+    year: "Year 4: Our Love Whispers",
+    title: "Look at my cute Sandakaari! 💃",
+    description: "Her complete innocence, captured in motion.",
+    color: "from-indigo-400/20 to-rose-400/20",
+  },
+  {
+    id: "25",
+    type: "video",
+    src: Video4,
+    thumbnail: Picture28, // Use a photo as thumbnail
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "26",
+    type: "video",
+    src: Video5,
+    thumbnail: Picture27, // Use a photo as thumbnail
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "27",
+    type: "video",
+    src: Video6,
+    thumbnail: Picture29, // Use a photo as thumbnail
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  },
+  {
+    id: "28",
+    type: "video",
+    src: Video7,
+    thumbnail: Picture30, // Use a photo as thumbnail
+    year: "Special Moments",
+    title: "Our Love Highlights 🎥",
+    description: "Relive the magic of our vows in this heartfelt montage.",
+    color: "from-pink-400/20 to-violet-400/20",
+  }
 ];
 
 const Album = () => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<'all' | 'photos' | 'videos'>('all');
+
+  const filteredItems = galleryItems.filter(item => 
+    viewMode === 'all' || 
+    (viewMode === 'photos' && item.type === 'image') ||
+    (viewMode === 'videos' && item.type === 'video')
+  );
 
   const openModal = (item: GalleryItem) => {
     setSelectedItem(item);
@@ -121,7 +350,7 @@ const Album = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 
-            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent py-4"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             Our Precious Memories
@@ -129,11 +358,45 @@ const Album = () => {
           <p className="text-2xl text-white/80">
             A gallery of photos and videos capturing our journey 💕
           </p>
+
+          {/* Toggle Buttons */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={() => setViewMode('all')}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
+                viewMode === 'all'
+                  ? 'bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white romantic-glow'
+                  : 'bg-white/10 text-white/70 hover:bg-white/20'
+              }`}
+            >
+              All Memories
+            </button>
+            <button
+              onClick={() => setViewMode('photos')}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
+                viewMode === 'photos'
+                  ? 'bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white romantic-glow'
+                  : 'bg-white/10 text-white/70 hover:bg-white/20'
+              }`}
+            >
+              Photos 📸
+            </button>
+            <button
+              onClick={() => setViewMode('videos')}
+              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
+                viewMode === 'videos'
+                  ? 'bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white romantic-glow'
+                  : 'bg-white/10 text-white/70 hover:bg-white/20'
+              }`}
+            >
+              Videos 🎥
+            </button>
+          </div>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {galleryItems.map((item) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+          {filteredItems.map((item) => (
             <div
               key={item.id}
               className="group relative overflow-hidden rounded-2xl cursor-pointer romantic-glow hover:scale-105 transition-all duration-500"
@@ -143,13 +406,13 @@ const Album = () => {
                 <img
                   src={getSrc(item.src)}
                   alt={item.title}
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl"
+                  className="w-full h-72 md:h-96 object-cover rounded-2xl"
                 />
               ) : (
                 <video
                   src={getSrc(item.src)}
                   poster={getSrc(item.thumbnail)}
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl"
+                  className="w-full h-72 md:h-96 object-cover rounded-2xl"
                   muted
                   preload="metadata"
                 >
@@ -179,13 +442,13 @@ const Album = () => {
         </div>
 
         {/* Back to Home Button */}
-<div className="text-center pb-20">
-  <Link to="/?skipIntro=true">
-    <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-lg rounded-full romantic-glow hover:scale-105 transition-all duration-300 cursor-pointer">
-      Back to Our Journey 💕
-    </div>
-  </Link>
-</div>
+        <div className="text-center pb-20 py-12">
+          <Link to="/?skipIntro=true">
+            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-lg rounded-full romantic-glow hover:scale-105 transition-all duration-300 cursor-pointer">
+              Back to Our Journey 💕
+            </div>
+          </Link>
+        </div>
       </div>
 
       {/* Modal for full view */}

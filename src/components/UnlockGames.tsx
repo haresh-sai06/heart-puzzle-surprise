@@ -19,34 +19,31 @@ const shuffleWord = (word: string) => {
 export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
   const [currentLevel, setCurrentLevel] = useState(1);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showCongrats, setShowCongrats] = useState(false);
+  const [congratsMessage, setCongratsMessage] = useState("");
   
-  // Level 2: Unscramble STARS
-  const [shuffledWord, setShuffledWord] = useState(() => shuffleWord("STARS"));
-  const [unscrambleInput, setUnscrambleInput] = useState("");
-  const [unscrambleAttempts, setUnscrambleAttempts] = useState(0);
-  const [showUnscrambleHint, setShowUnscrambleHint] = useState(false);
+  // Level 2: Name of girl child
+  const [childNameInput, setChildNameInput] = useState("");
+  const [childNameAttempts, setChildNameAttempts] = useState(0);
+  const [showChildNameHint, setShowChildNameHint] = useState(false);
   
   // Level 3: Secret Code
   const [codeInput, setCodeInput] = useState("");
   const [codeAttempts, setCodeAttempts] = useState(0);
   const [showCodeHint, setShowCodeHint] = useState(false);
 
-  useEffect(() => {
-    // Ensure shuffled word is different from original
-    let shuffled = shuffleWord("STARS");
-    while (shuffled === "STARS") {
-      shuffled = shuffleWord("STARS");
-    }
-    setShuffledWord(shuffled);
-  }, [currentLevel]);
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
   const handleNext = () => {
     if (currentLevel < 3) {
       setCurrentLevel(currentLevel + 1);
       // Reset states for next level
-      setUnscrambleInput("");
-      setUnscrambleAttempts(0);
-      setShowUnscrambleHint(false);
+      setChildNameInput("");
+      setChildNameAttempts(0);
+      setShowChildNameHint(false);
       setCodeInput("");
       setCodeAttempts(0);
       setShowCodeHint(false);
@@ -58,32 +55,49 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
     }
   };
 
-  const handleUnscrambleSubmit = () => {
-    if (unscrambleInput.toUpperCase() === "STARS") {
-      handleNext();
+  const showLevelCongrats = (message: string) => {
+    setCongratsMessage(message);
+    setShowCongrats(true);
+    setTimeout(() => {
+      setShowCongrats(false);
+      if (currentLevel === 3) {
+        setTimeout(() => {
+          onComplete();
+        }, 500);
+      } else {
+        handleNext();
+      }
+    }, 2000);
+  };
+
+  const handleMonthSelect = (month: string) => {
+    if (month === "October") {
+      showLevelCongrats("Perfect! Our sparks flew in the heart of autumn. Onward to the next memory! ✨");
     } else {
-      const newAttempts = unscrambleAttempts + 1;
-      setUnscrambleAttempts(newAttempts);
+      // Optional: Gentle feedback for wrong month
+    }
+  };
+
+  const handleChildNameSubmit = () => {
+    if (childNameInput.toUpperCase() === "VAISHNAVI") {
+      showLevelCongrats("Last one more level to go! Our little miracle unlocks the final door. 💕");
+    } else {
+      const newAttempts = childNameAttempts + 1;
+      setChildNameAttempts(newAttempts);
       if (newAttempts >= 1) {
-        setShowUnscrambleHint(true);
+        setShowChildNameHint(true);
       }
       if (newAttempts >= 3) {
-        // Reshuffle word
-        let shuffled = shuffleWord("STARS");
-        while (shuffled === "STARS") {
-          shuffled = shuffleWord("STARS");
-        }
-        setShuffledWord(shuffled);
-        setUnscrambleAttempts(0);
-        setShowUnscrambleHint(false);
-        setUnscrambleInput("");
+        setChildNameAttempts(0);
+        setShowChildNameHint(false);
+        setChildNameInput("");
       }
     }
   };
 
   const handleCodeSubmit = () => {
     if (codeInput === "1106") {
-      handleNext();
+      showLevelCongrats("Get ready to be surprised! Our story awaits... 🎁");
     } else {
       const newAttempts = codeAttempts + 1;
       setCodeAttempts(newAttempts);
@@ -96,6 +110,10 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
         setCodeInput("");
       }
     }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent, handler: () => void) => {
+    if (e.key === 'Enter') handler();
   };
 
   const progress = (currentLevel / 3) * 100;
@@ -144,7 +162,7 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
 
         {/* Current game */}
         <div className="animate-fade-in max-w-2xl mx-auto">
-          {/* Level 1: Button for October */}
+          {/* Level 1: Month Buttons */}
           {currentLevel === 1 && (
             <div className="bg-gradient-to-br from-rose-400/20 via-pink-400/20 to-violet-400/20 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12 romantic-glow text-center space-y-6">
               <h2 
@@ -156,54 +174,55 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
               <p className="text-white/80 text-lg mb-6">
                 Click the month when our hearts first connected
               </p>
-              <Button
-                onClick={handleNext}
-                className="px-12 py-6 text-2xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 hover:scale-110 transition-all duration-300 romantic-glow"
-                style={{ fontFamily: "'Great Vibes', cursive" }}
-              >
-                October 🍂
-              </Button>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-md mx-auto">
+                {months.map((month) => (
+                  <Button
+                    key={month}
+                    onClick={() => handleMonthSelect(month)}
+                    variant={ "default" }
+                    className={`py-3 text-sm font-semibold transition-all duration-300 `}
+                  >
+                    {month}
+                  </Button>
+                ))}
+              </div>
             </div>
           )}
 
-          {/* Level 2: Unscramble STARS */}
+          {/* Level 2: Child Name */}
           {currentLevel === 2 && (
             <div className="bg-gradient-to-br from-indigo-400/20 via-purple-400/20 to-pink-400/20 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-12 romantic-glow text-center space-y-6">
               <h2 
                 className="text-3xl md:text-4xl font-bold text-white mb-4"
                 style={{ fontFamily: "'Great Vibes', cursive" }}
               >
-                Unscramble Our Memory 💫
+                Our Little Miracle 👶
               </h2>
               <p className="text-white/80 text-lg mb-4">
-                Our first dance was under the...
+                What is the name of our girl child?
               </p>
-              <div className="text-4xl font-bold text-white/90 tracking-widest mb-6 animate-pulse">
-                {shuffledWord}
-              </div>
               <Input
                 type="text"
-                value={unscrambleInput}
-                onChange={(e) => setUnscrambleInput(e.target.value.toUpperCase())}
-                onKeyDown={(e) => e.key === 'Enter' && handleUnscrambleSubmit()}
-                placeholder="Type the word..."
-                maxLength={5}
+                value={childNameInput}
+                onChange={(e) => setChildNameInput(e.target.value.toUpperCase())}
+                onKeyDown={(e) => handleKeyDown(e, handleChildNameSubmit)}
+                placeholder="Her name..."
                 className="text-center text-2xl font-bold bg-white/10 border-white/30 text-white placeholder:text-white/40"
               />
-              {showUnscrambleHint && (
+              {showChildNameHint && (
                 <p className="text-rose-300 text-sm animate-fade-in">
-                  Hint: Twinkling night sky 💫
+                  Hint: Our little princess's name 💕
                 </p>
               )}
               <Button
-                onClick={handleUnscrambleSubmit}
-                disabled={unscrambleInput.length !== 5}
+                onClick={handleChildNameSubmit}
+                disabled={childNameInput.length < 3}
                 className="px-8 py-4 text-xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 hover:scale-105 transition-all duration-300 romantic-glow disabled:opacity-50"
               >
                 Submit
               </Button>
               <p className="text-white/60 text-sm">
-                Attempts: {unscrambleAttempts}/3 (Resets after 3 tries)
+                Attempts: {childNameAttempts}/3 (Resets after 3 tries)
               </p>
             </div>
           )}
@@ -224,7 +243,7 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
                 type="text"
                 value={codeInput}
                 onChange={(e) => setCodeInput(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                onKeyDown={(e) => e.key === 'Enter' && handleCodeSubmit()}
+                onKeyDown={(e) => handleKeyDown(e, handleCodeSubmit)}
                 placeholder="****"
                 maxLength={4}
                 className="text-center text-3xl font-bold tracking-widest bg-white/10 border-white/30 text-white placeholder:text-white/40"
@@ -247,6 +266,21 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
             </div>
           )}
         </div>
+
+        {/* Congratulations Modal */}
+        {showCongrats && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+            <div className="bg-gradient-to-br from-rose-400/30 via-pink-400/30 to-violet-400/30 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 text-center max-w-md mx-4 romantic-glow animate-fade-in-up space-y-4">
+              <div className="text-6xl mb-4">🎉</div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                Congratulations!
+              </h3>
+              <p className="text-white/90 text-lg leading-relaxed">
+                {congratsMessage}
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Confetti burst on completion */}
         {showConfetti && (

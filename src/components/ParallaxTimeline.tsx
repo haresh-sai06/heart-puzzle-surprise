@@ -20,39 +20,44 @@ interface TimelineSection {
 
 const timelineSections: TimelineSection[] = [
   {
-    year: "Year 1: 10th Std Sparks",
-    title: "Butterflies in the Hallways ✨",
-    description: "It began with a glance across the classroom, hearts fluttering like autumn leaves in October wind. Your smile lit up my world on that fateful October 11, 2016—the spark that ignited our eternal flame.",
+    year: "Year 1: October Beginnings 🌸",
+    title: "The Day My Heart Spoke ❤️",
+    description:
+      "It all began on October 14, back in 10th standard — the day I gathered the courage to confess my love. But fate had its own path; she wasn’t ready yet. Behind her smile lived pain — a trauma she feared would push me away. Yet, little did she know, my love wasn’t fragile. It was patient, and it was real.",
     color: "from-rose-400/20 to-pink-400/20",
-    photoPath: Picture1, // Assigned imported image
+    photoPath: Picture1,
   },
   {
-    year: "Year 2: Whispers & Promises",
-    title: "Rainy Confessions Under Stars 💭",
-    description: "Secret notes folded in palms, promises sealed in rainy Octobers. From birthday whispers on the 11th to anniversary vows on the 14th, every moment wove our souls closer, deeper into love's gentle embrace.",
+    year: "Year 2: Through Storms & Shadows ☔",
+    title: "I Chose to Stay 💫",
+    description:
+      "That year wasn’t easy. The truth behind her silence surfaced, and my heart broke with hers. There were tears, misunderstandings, and endless fights — but I never let go. Through every scar and every storm, I stood by her side. Together, we made it through 12th standard, not as perfect lovers, but as two souls who refused to give up on each other.",
     color: "from-pink-400/20 to-violet-400/20",
-    photoPath: Picture2, // Assigned imported image
+    photoPath: Picture2,
   },
   {
-    year: "Year 3: College Vows",
-    title: "Dreams Shared, Hands Entwined 💍",
-    description: "Campus paths trodden together, futures painted in shared dreams. Laughter echoing through libraries, love blooming like spring cherry blossoms—our bond, unbreakable, timeless.",
+    year: "Year 3: Healing Hearts 🌿",
+    title: "She Began to Smile Again 🌼",
+    description:
+      "Time began to heal what pain once ruled. She started finding herself again — her laughter returning like sunlight after a storm. We built memories, shared dreams, and finally started living without fear. Yet, the shadows of her home still lingered. But even when life tried to pull her down, I became her calm — her constant peace amidst the chaos.",
     color: "from-violet-400/20 to-indigo-400/20",
-    photoPath: Picture3, // Assigned imported image
+    photoPath: Picture3,
   },
   {
-    year: "Year 4: Wedding Whispers",
-    title: "Vows Beneath the Stars 💒",
-    description: "In a cascade of petals and promises, we became one. That sacred October day, under twinkling heavens, we whispered 'forever'—a vow etched in the stars, our hearts forever intertwined.",
+    year: "Year 4: Our October Forever 💕",
+    title: "Four Years of Us ✨",
+    description:
+      "Now, in our 2nd year of college, our love has grown through everything life could test us with. From the scared girl who couldn’t trust love, to the strong woman who found comfort in it — we’ve come a long way. This October marks not just four years together, but four years of healing, strength, and a bond that no distance or darkness can break.",
     color: "from-indigo-400/20 to-rose-400/20",
-    photoPath: Picture4, // Assigned imported image
+    photoPath: Picture4,
   },
   {
-    year: "Now: Four Eternal Years",
-    title: "Our Infinite October Love 💕",
-    description: "Four years of sunrises shared, storms weathered hand in hand. From schoolyard glances to marital bliss, our love story unfolds like a cherished novel—each chapter more beautiful than the last.",
+    year: "Now: Our Endless Chapter 🌙",
+    title: "Still Choosing Each Other 💖",
+    description:
+      "Even after all this time, I still fall for her in new ways every day. We’ve walked through pain, faced storms, and found light together. She is my strength, my softness, my October — the one I’ll keep loving, no matter how many lifetimes come and go. Here’s to forever starting from 10th standard... and never ending.",
     color: "from-rose-400/20 to-pink-400/20",
-    photoPath: Picture5, // Assigned imported image
+    photoPath: Picture5,
   },
 ];
 
@@ -171,7 +176,7 @@ export const ParallaxTimeline = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 
-            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
+            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up py-4"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             Our Eternal Journey
@@ -262,28 +267,32 @@ export const ParallaxTimeline = () => {
 
         {/* Final romantic message */}
         <div className="mt-32 text-center space-y-8 animate-fade-in pb-20">
-          <h3 
-            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
-            style={{ fontFamily: "'Great Vibes', cursive" }}
-          >
-            To Infinite Octobers Together
-          </h3>
-          <p className="text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm">
-            On this special October, celebrating four years of woven destinies and one extraordinary birthday. 
-            From that innocent spark in 10th standard to the symphony of our shared life, 
-            you are my forever October—warm, vibrant, eternal.
-          </p>
-          <p className="text-xl text-rose-300/80 max-w-2xl mx-auto italic">
-            Happy Birthday, My Eternal Love. Here's to countless more chapters in our story. 💕
-          </p>
-          <div className="flex justify-center gap-8 text-6xl">
-            <div className="animate-float-slow">💑</div>
-            <div className="animate-float-slow" style={{ animationDelay: '1s' }}>💖</div>
-            <div className="animate-float-slow" style={{ animationDelay: '2s' }}>✨</div>
-          </div>
-        </div>
+  <h3 
+    className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up py-4  "
+    style={{ fontFamily: "'Great Vibes', cursive" }}
+  >
+    For the One Who Made My World Bloom 🌷
+  </h3>
+  <p className="text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm">
+    Today isn’t just another day — it’s a reminder of how beautifully you exist. 
+    Your smile still feels like sunrise, your voice still feels like home, 
+    and your presence still feels like peace after a storm. 
+    You’ve been my reason to hope, my comfort through chaos, and my heartbeat through silence. 
+    Every moment with you is a gift I’ll never take for granted.
+  </p>
+  <p className="text-xl text-rose-300/80 max-w-2xl mx-auto italic">
+    Happy Birthday, Wifeey — my heart’s favorite melody, my forever warmth.  
+    May your days shine as softly as your soul does in mine. 💕
+  </p>
+  <div className="flex justify-center gap-8 text-6xl">
+    <div className="animate-float-slow">💖</div>
+    <div className="animate-float-slow" style={{ animationDelay: '1s' }}>🎂</div>
+    <div className="animate-float-slow" style={{ animationDelay: '2s' }}>🌙</div>
+  </div>
+</div>
 
-        {/* Infinite Scroll Love Letters */}
+
+        {/* Infinite Scroll Love Letters
         <div className="mt-20 max-w-4xl mx-auto space-y-8 pb-20">
           <h3 
             className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
@@ -326,7 +335,7 @@ export const ParallaxTimeline = () => {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* View Album Button */}
         <div className="text-center pb-20 z-50">
