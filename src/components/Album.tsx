@@ -350,11 +350,7 @@ const Album = () => {
       <div className="relative z-10 container mx-auto px-3 sm:px-4 md:px-6">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 space-y-2 sm:space-y-3 md:space-y-4 px-2">
           <h2 
-<<<<<<< HEAD
-            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent py-4"
-=======
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent"
->>>>>>> 890693857de93646cedae33bede7146fb2c94d00
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent py-4"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             Our Precious Memories
@@ -398,15 +394,9 @@ const Album = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-10 max-w-7xl mx-auto">
           {filteredItems.map((item) => (
-=======
-        {/* Gallery Grid - Mobile responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
-          {galleryItems.map((item) => (
->>>>>>> 890693857de93646cedae33bede7146fb2c94d00
             <div
               key={item.id}
               className="group relative overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-500"
@@ -416,22 +406,14 @@ const Album = () => {
                 <img
                   src={getSrc(item.src)}
                   alt={item.title}
-<<<<<<< HEAD
-                  className="w-full h-72 md:h-96 object-cover rounded-2xl"
-=======
                   className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl"
                   loading="lazy"
->>>>>>> 890693857de93646cedae33bede7146fb2c94d00
                 />
               ) : (
                 <video
                   src={getSrc(item.src)}
                   poster={getSrc(item.thumbnail)}
-<<<<<<< HEAD
-                  className="w-full h-72 md:h-96 object-cover rounded-2xl"
-=======
                   className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl"
->>>>>>> 890693857de93646cedae33bede7146fb2c94d00
                   muted
                   preload="metadata"
                 >
@@ -460,25 +442,14 @@ const Album = () => {
           ))}
         </div>
 
-<<<<<<< HEAD
-        {/* Back to Home Button */}
-        <div className="text-center pb-20 py-12">
+        {/* Back to Home Button - Mobile optimized */}
+        <div className="text-center pb-12 sm:pb-16 md:pb-20 mt-8 sm:mt-12 md:mt-16">
           <Link to="/?skipIntro=true">
-            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-lg rounded-full romantic-glow hover:scale-105 transition-all duration-300 cursor-pointer">
+            <div className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-base sm:text-lg rounded-full romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-300 cursor-pointer">
               Back to Our Journey 💕
             </div>
           </Link>
         </div>
-=======
-        {/* Back to Home Button - Mobile optimized */}
-<div className="text-center pb-12 sm:pb-16 md:pb-20 mt-8 sm:mt-12 md:mt-16">
-  <Link to="/?skipIntro=true">
-    <div className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-base sm:text-lg rounded-full romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-300 cursor-pointer">
-      Back to Our Journey 💕
-    </div>
-  </Link>
-</div>
->>>>>>> 890693857de93646cedae33bede7146fb2c94d00
       </div>
 
       {/* Modal for full view - Mobile optimized */}
