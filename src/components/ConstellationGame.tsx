@@ -51,64 +51,64 @@ export const ConstellationGame = ({ onComplete }: ConstellationGameProps) => {
 
   if (isComplete) {
     return (
-      <div className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center space-y-6 p-4">
-        {/* Prism background - full screen */}
+      <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center space-y-4 sm:space-y-6 p-3 sm:p-4">
+        {/* Prism background - Mobile optimized */}
         <div className="absolute inset-0 z-0">
           <Prism
             animationType="rotate"
-            timeScale={0.6}
+            timeScale={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.8 : 0.6}
             height={3.0}
             baseWidth={5.5}
-            scale={4.0}
+            scale={typeof window !== 'undefined' && window.innerWidth < 768 ? 3.0 : 4.0}
             hueShift={0}
             colorFrequency={1}
             noise={0.3}
-            glow={0.8}
+            glow={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.6 : 0.8}
           />
         </div>
 
-        {/* Congratulations Overlay */}
-        <div className="relative z-20 flex flex-col items-center justify-center text-center space-y-6 bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/20 drop-shadow-2xl max-w-md w-full">
-          <div className="text-6xl animate-bounce">🎉</div>
-          <h2 className="text-4xl font-bold text-white drop-shadow-lg">Congratulations!</h2>
-          <p className="text-xl text-white/90 drop-shadow-md">You connected our stars perfectly! 💫</p>
-          <p className="text-lg text-rose-300 italic">One more game to go... Our story awaits!</p>
+        {/* Congratulations Overlay - Mobile responsive */}
+        <div className="relative z-20 flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6 bg-white/10 backdrop-blur-md rounded-xl p-6 sm:p-8 border border-white/20 drop-shadow-2xl max-w-sm sm:max-w-md w-full mx-2">
+          <div className="text-5xl sm:text-6xl animate-bounce">🎉</div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white drop-shadow-lg">Congratulations!</h2>
+          <p className="text-lg sm:text-xl text-white/90 drop-shadow-md">You connected our stars perfectly! 💫</p>
+          <p className="text-base sm:text-lg text-rose-300 italic">One more game to go... Our story awaits!</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative h-[610px] w-[1400px] overflow-hidden flex flex-col items-center justify-center space-y-6 p-4">
-      {/* Prism background - full screen */}
+    <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center space-y-4 sm:space-y-6 p-3 sm:p-4">
+      {/* Prism background - Mobile optimized */}
       <div className="absolute inset-0 z-0">
         <Prism
           animationType="rotate"
-          timeScale={0.6}
+          timeScale={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.8 : 0.6}
           height={3.0}
           baseWidth={5.5}
-          scale={4.0}
+          scale={typeof window !== 'undefined' && window.innerWidth < 768 ? 3.0 : 4.0}
           hueShift={0}
           colorFrequency={1}
           noise={0.3}
-          glow={0.8}
+          glow={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.6 : 0.8}
         />
       </div>
 
-      {/* Header - centered, visible over bg */}
-      <div className="text-center z-10 relative bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 drop-shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Level 2: Connect Our Stars</h2>
-        <p className="text-white/80 drop-shadow-md text-sm md:text-base">Tap the stars in order to form the constellation of our love</p>
+      {/* Header - Mobile responsive */}
+      <div className="text-center z-10 relative bg-white/10 backdrop-blur-md rounded-xl p-3 sm:p-4 border border-white/20 drop-shadow-lg max-w-sm sm:max-w-md mx-auto">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-lg">Level 2: Connect Our Stars</h2>
+        <p className="text-white/80 drop-shadow-md text-xs sm:text-sm md:text-base">Tap the stars in order to form the constellation of our love</p>
       </div>
 
-      {/* Constellation Card - responsive, fits viewport */}
-      <Card className="relative w-full max-w-md mx-auto aspect-square bg-gradient-to-br from-background/20 to-card/20 overflow-hidden border border-white/10 backdrop-blur-sm z-10">
-        {/* Twinkling background stars */}
+      {/* Constellation Card - Mobile optimized with proper sizing */}
+      <Card className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto aspect-square bg-gradient-to-br from-background/20 to-card/20 overflow-hidden border border-white/10 backdrop-blur-sm z-10">
+        {/* Twinkling background stars - Reduced on mobile for performance */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {[...Array(typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : 30)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-white/30 rounded-full animate-pulse"
+              className="absolute w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white/30 rounded-full animate-pulse"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -141,14 +141,14 @@ export const ConstellationGame = ({ onComplete }: ConstellationGameProps) => {
           })}
         </svg>
 
-        {/* Interactive stars */}
+        {/* Interactive stars - Larger touch targets on mobile */}
         {starStates.map((star) => (
           <button
             key={star.id}
             onClick={() => handleStarClick(star.id)}
             disabled={star.connected}
-            className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
-              star.connected ? 'scale-125' : 'hover:scale-110'
+            className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+              star.connected ? 'scale-125' : 'active:scale-95 sm:hover:scale-110'
             }`}
             style={{
               left: `${star.x}%`,
@@ -156,12 +156,12 @@ export const ConstellationGame = ({ onComplete }: ConstellationGameProps) => {
             }}
           >
             <div className={`relative ${star.connected ? 'animate-pulse' : ''}`}>
-              <div className={`w-6 h-6 rounded-full ${
+              <div className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full ${
                 star.connected 
                   ? 'bg-accent shadow-[0_0_15px_hsl(var(--accent))]' 
                   : 'bg-primary/50 shadow-[0_0_8px_hsl(var(--primary))]'
               }`} />
-              <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-white/90 whitespace-nowrap drop-shadow-md">
+              <span className="absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 text-[10px] sm:text-xs text-white/90 whitespace-nowrap drop-shadow-md font-medium">
                 {star.label}
               </span>
             </div>
@@ -189,11 +189,11 @@ export const ConstellationGame = ({ onComplete }: ConstellationGameProps) => {
         )}
       </Card>
 
-      {/* Skip Button - bottom centered */}
-      <div className="text-center z-10 relative mt-auto pb-4">
+      {/* Skip Button - Mobile optimized */}
+      <div className="text-center z-10 relative mt-auto pb-3 sm:pb-4">
         <button
           onClick={handleSkip}
-          className="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-full hover:from-pink-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 drop-shadow-2xl"
+          className="px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-full hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl transform sm:hover:scale-105 drop-shadow-2xl text-base sm:text-lg"
         >
           Skip 💖
         </button>

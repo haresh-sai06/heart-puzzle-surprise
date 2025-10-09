@@ -103,73 +103,74 @@ const Album = () => {
   };
 
   return (
-    <div className="relative min-h-screen py-20 overflow-hidden bg-black">
-      {/* Particles background */}
+    <div className="relative min-h-screen py-12 sm:py-16 md:py-20 overflow-hidden bg-black">
+      {/* Particles background - Mobile optimized */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Particles
           particleColors={['#ff69b4', '#ff1493']}
-          particleCount={600}
+          particleCount={typeof window !== 'undefined' && window.innerWidth < 768 ? 200 : 600}
           particleSpread={15}
-          speed={0.05}
-          particleBaseSize={60}
+          speed={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.03 : 0.05}
+          particleBaseSize={typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 60}
           moveParticlesOnHover={true}
           alphaParticles={true}
           disableRotation={false}
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
+      <div className="relative z-10 container mx-auto px-3 sm:px-4 md:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 space-y-2 sm:space-y-3 md:space-y-4 px-2">
           <h2 
-            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             Our Precious Memories
           </h2>
-          <p className="text-2xl text-white/80">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/80">
             A gallery of photos and videos capturing our journey 💕
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {/* Gallery Grid - Mobile responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
           {galleryItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer romantic-glow hover:scale-105 transition-all duration-500"
+              className="group relative overflow-hidden rounded-xl sm:rounded-2xl cursor-pointer romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-500"
               onClick={() => openModal(item)}
             >
               {item.type === "image" ? (
                 <img
                   src={getSrc(item.src)}
                   alt={item.title}
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl"
+                  className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl"
+                  loading="lazy"
                 />
               ) : (
                 <video
                   src={getSrc(item.src)}
                   poster={getSrc(item.thumbnail)}
-                  className="w-full h-64 md:h-80 object-cover rounded-2xl"
+                  className="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover rounded-xl sm:rounded-2xl"
                   muted
                   preload="metadata"
                 >
                   Your browser does not support the video tag.
                 </video>
               )}
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-4 pointer-events-none">
+              {/* Overlay - Mobile optimized */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-3 sm:p-4 pointer-events-none">
                 <div className="w-full">
-                  <div className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${item.color} text-xs font-bold text-white mb-2`}>
+                  <div className={`inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-gradient-to-r ${item.color} text-[10px] sm:text-xs font-bold text-white mb-1 sm:mb-2`}>
                     {item.year}
                   </div>
-                  <h3 className="text-white font-semibold text-lg drop-shadow-md">{item.title}</h3>
-                  <p className="text-white/80 text-sm">{item.type === "video" ? "▶️ Video" : "📸 Photo"}</p>
+                  <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg drop-shadow-md">{item.title}</h3>
+                  <p className="text-white/80 text-xs sm:text-sm">{item.type === "video" ? "▶️ Video" : "📸 Photo"}</p>
                 </div>
               </div>
-              {/* Play icon for videos */}
+              {/* Play icon - Mobile sized */}
               {item.type === "video" && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-white/20 rounded-full p-4 text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/20 rounded-full p-3 sm:p-4 text-white text-xl sm:text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     ▶️
                   </div>
                 </div>
@@ -178,50 +179,51 @@ const Album = () => {
           ))}
         </div>
 
-        {/* Back to Home Button */}
-<div className="text-center pb-20">
+        {/* Back to Home Button - Mobile optimized */}
+<div className="text-center pb-12 sm:pb-16 md:pb-20 mt-8 sm:mt-12 md:mt-16">
   <Link to="/?skipIntro=true">
-    <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-lg rounded-full romantic-glow hover:scale-105 transition-all duration-300 cursor-pointer">
+    <div className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-base sm:text-lg rounded-full romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-300 cursor-pointer">
       Back to Our Journey 💕
     </div>
   </Link>
 </div>
       </div>
 
-      {/* Modal for full view */}
+      {/* Modal for full view - Mobile optimized */}
       {isModalOpen && selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90" onClick={closeModal}>
-          <div className="relative max-w-4xl max-h-full p-4" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-2 sm:p-4" onClick={closeModal}>
+          <div className="relative w-full max-w-4xl max-h-full p-2 sm:p-4" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-white text-3xl hover:text-rose-400 transition-colors"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-white text-3xl sm:text-4xl hover:text-rose-400 transition-colors bg-black/50 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
             >
               ×
             </button>
-            <div className="flex flex-col items-center space-y-4">
+            <div className="flex flex-col items-center space-y-3 sm:space-y-4">
               {selectedItem.type === "image" ? (
                 <img
                   src={getSrc(selectedItem.src)}
                   alt={selectedItem.title}
-                  className="max-w-full max-h-[80vh] object-contain rounded-2xl romantic-glow"
+                  className="max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain rounded-xl sm:rounded-2xl romantic-glow"
                 />
               ) : (
                 <video
                   src={getSrc(selectedItem.src)}
                   poster={getSrc(selectedItem.thumbnail)}
                   controls
-                  className="max-w-full max-h-[80vh] object-contain rounded-2xl"
+                  className="max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain rounded-xl sm:rounded-2xl"
                   autoPlay
+                  playsInline
                 >
                   Your browser does not support the video tag.
                 </video>
               )}
-              <div className="text-center text-white space-y-2">
-                <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${selectedItem.color} romantic-glow`}>
-                  <span className="font-bold">{selectedItem.year}</span>
+              <div className="text-center text-white space-y-1 sm:space-y-2 px-2">
+                <div className={`inline-block px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r ${selectedItem.color} romantic-glow`}>
+                  <span className="font-bold text-sm sm:text-base">{selectedItem.year}</span>
                 </div>
-                <h3 className="text-2xl font-bold">{selectedItem.title}</h3>
-                <p className="text-white/80 max-w-2xl leading-relaxed">{selectedItem.description}</p>
+                <h3 className="text-xl sm:text-2xl font-bold">{selectedItem.title}</h3>
+                <p className="text-sm sm:text-base text-white/80 max-w-xs sm:max-w-md md:max-w-2xl leading-relaxed">{selectedItem.description}</p>
               </div>
             </div>
           </div>
