@@ -97,29 +97,29 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
   const formatTime = (time: number) => time.toString().padStart(2, '0');
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Prismatic Burst background effect */}
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-3 sm:px-4">
+      {/* Prismatic Burst background effect - Mobile optimized */}
       <div className="absolute inset-0 z-0">
         <PrismaticBurst
           animationType="rotate3d"
-          intensity={3.5}
-          speed={0.7}
-          distort={1.0}
+          intensity={typeof window !== 'undefined' && window.innerWidth < 768 ? 2.5 : 3.5}
+          speed={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.5 : 0.7}
+          distort={typeof window !== 'undefined' && window.innerWidth < 768 ? 0.7 : 1.0}
           paused={false}
           offset={{ x: 0.5, y: 0.5 }}
           hoverDampness={0.25}
-          rayCount={24}
+          rayCount={typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 24}
           mixBlendMode="lighten"
           colors={['#ff007a', '#4d3dff', '#ffffff']}
         />
       </div>
 
-      {/* Floating lanterns releasing from center on reveal */}
+      {/* Floating lanterns - Reduced count on mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {[...Array(revealed ? 12 : 0)].map((_, i) => (
+        {[...Array(revealed ? (typeof window !== 'undefined' && window.innerWidth < 768 ? 6 : 12) : 0)].map((_, i) => (
           <div
             key={`lantern-${i}`}
-            className="absolute text-4xl animate-lantern-float opacity-90"
+            className="absolute text-2xl sm:text-3xl md:text-4xl animate-lantern-float opacity-90"
             style={{
               left: `${Math.random() * 100}%`,
               top: '100%',
@@ -127,19 +127,19 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
               animationDuration: `${8 + Math.random() * 4}s`,
             }}
           >
-            <div className="flex flex-col items-center space-y-1">
+            <div className="flex flex-col items-center space-y-0.5 sm:space-y-1">
               <span>🏮</span>
-              <span className="text-xs font-bold text-gold -mt-2 transform rotate-[-15deg]">{['H', 'A', 'P', 'P', 'Y', ' ', 'B', 'I', 'R', 'T', 'H', 'D', 'A', 'Y', '!'][i % 15] || ''}</span>
+              <span className="text-[8px] sm:text-xs font-bold text-gold -mt-1 sm:-mt-2 transform rotate-[-15deg]">{['H', 'A', 'P', 'P', 'Y', ' ', 'B', 'I', 'R', 'T', 'H', 'D', 'A', 'Y', '!'][i % 15] || ''}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="relative z-50 text-center space-y-12 px-4">
-        {/* Main title with typing effect and stylish font */}
-        <div className="space-y-4 heartbeat-text">
+      <div className="relative z-50 text-center space-y-6 sm:space-y-8 md:space-y-12 px-2 sm:px-4 w-full max-w-4xl">
+        {/* Main title with typing effect - Mobile responsive */}
+        <div className="space-y-2 sm:space-y-3 md:space-y-4 heartbeat-text">
           <h1 
-            className="text-6xl md:text-8xl font-bold text-foreground"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-foreground leading-tight"
             style={{
               fontFamily: "'Great Vibes', cursive",
               color: revealed ? 'gold' : 'white',
@@ -147,45 +147,45 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
             }}
           >
             {displayedText}
-            {showCursor && <span className="animate-pulse text-6xl md:text-8xl font-bold">|</span>}
+            {showCursor && <span className="animate-pulse text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold">|</span>}
           </h1>
           
           {revealed && (
-            <div className="animate-fade-in-up">
-              <p className="text-3xl text-accent font-semibold">
+            <div className="animate-fade-in-up px-2">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-accent font-semibold">
                 And Our 4th Anniversary Awaits on Oct 14! 🎊
               </p>
             </div>
           )}
         </div>
 
-        <div className="max-w-md mx-auto relative">
-          <p className="text-xl text-muted-foreground mb-6 text-center">Counting down to your special day...</p>
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto relative px-2">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-6 text-center">Counting down to your special day...</p>
           <div className="relative hourglass-container">
-            {/* Hourglass frame: Frosted glass effect with soft pink gradient */}
-            <div className="relative bg-gradient-to-b from-rose-50 via-pink-50 to-rose-100 rounded-3xl p-10 shadow-2xl border border-rose-200/50 backdrop-blur-sm">
+            {/* Hourglass frame - Mobile responsive */}
+            <div className="relative bg-gradient-to-b from-rose-50 via-pink-50 to-rose-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-rose-200/50 backdrop-blur-sm">
               {/* Subtle ornate pattern overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,182,193,0.1)_0%,transparent_70%)] rounded-3xl" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,182,193,0.1)_0%,transparent_70%)] rounded-2xl sm:rounded-3xl" />
               
-              {/* Upper bulb: Rounded triangle-like with soft glow */}
-              <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-24 h-20 bg-rose-200/30 rounded-t-full border-t-4 border-rose-300/50 flex items-end justify-center pb-2">
-                <div className="w-16 h-12 bg-gradient-to-b from-rose-100 to-transparent rounded-t-lg" />
+              {/* Upper bulb - Scaled for mobile */}
+              <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 w-16 h-14 sm:w-24 sm:h-20 bg-rose-200/30 rounded-t-full border-t-2 sm:border-t-4 border-rose-300/50 flex items-end justify-center pb-1 sm:pb-2">
+                <div className="w-12 h-8 sm:w-16 sm:h-12 bg-gradient-to-b from-rose-100 to-transparent rounded-t-lg" />
               </div>
               
-              {/* Narrow neck */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-4 h-8 bg-gradient-to-b from-rose-300/20 to-pink-300/20 rounded-full shadow-inner" />
+              {/* Narrow neck - Scaled */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-3 h-6 sm:w-4 sm:h-8 bg-gradient-to-b from-rose-300/20 to-pink-300/20 rounded-full shadow-inner" />
               
-              {/* Lower bulb: Rounded with soft glow */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-20 bg-rose-200/30 rounded-b-full border-b-4 border-rose-300/50 flex items-start justify-center pt-2">
-                <div className="w-16 h-12 bg-gradient-to-t from-rose-100 to-transparent rounded-b-lg" />
+              {/* Lower bulb - Scaled */}
+              <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-14 sm:w-24 sm:h-20 bg-rose-200/30 rounded-b-full border-b-2 sm:border-b-4 border-rose-300/50 flex items-start justify-center pt-1 sm:pt-2">
+                <div className="w-12 h-8 sm:w-16 sm:h-12 bg-gradient-to-t from-rose-100 to-transparent rounded-b-lg" />
               </div>
               
-              {/* Time display in center: Elegant with glow */}
-              <div className="text-center space-y-5 z-10 relative">
-                <div className="text-4xl md:text-5xl font-serif font-bold bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 bg-clip-text text-transparent mb-5 animate-pulse-slow">
+              {/* Time display - Mobile responsive */}
+              <div className="text-center space-y-3 sm:space-y-5 z-10 relative">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 bg-clip-text text-transparent mb-3 sm:mb-5 animate-pulse-slow">
                   {`${formatTime(countdown.days)}:${formatTime(countdown.hours)}:${formatTime(countdown.minutes)}:${formatTime(countdown.seconds)}`}
                 </div>
-                <div className="flex justify-center space-x-6 text-xs text-rose-600 font-medium uppercase tracking-widest">
+                <div className="flex justify-center space-x-3 sm:space-x-4 md:space-x-6 text-[10px] sm:text-xs text-rose-600 font-medium uppercase tracking-wide sm:tracking-widest">
                   <span>Days</span>
                   <span>Hours</span>
                   <span>Minutes</span>
@@ -196,20 +196,20 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
           </div>
         </div>
 
-        {/* Wiggling scroll prompt arrow */}
-        <div className="wiggle-arrow cursor-pointer" onClick={onScrollPrompt}>
-          <p className="text-lg text-foreground mb-2">Scroll to Our Story</p>
-          <div className="text-4xl animate-wiggle">⬇️</div>
+        {/* Wiggling scroll prompt - Mobile responsive */}
+        <div className="wiggle-arrow cursor-pointer mt-4 sm:mt-6" onClick={onScrollPrompt}>
+          <p className="text-sm sm:text-base md:text-lg text-foreground mb-1 sm:mb-2">Scroll to Our Story</p>
+          <div className="text-3xl sm:text-4xl animate-wiggle">⬇️</div>
         </div>
       </div>
 
-      {/* Enhanced confetti fireworks on reveal */}
+      {/* Enhanced confetti fireworks - Reduced on mobile */}
       {revealed && (
         <div className="fixed inset-0 pointer-events-none z-60">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(typeof window !== 'undefined' && window.innerWidth < 768 ? 25 : 50)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-2xl animate-confetti-blast"
+              className="absolute text-lg sm:text-xl md:text-2xl animate-confetti-blast"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 50 - 25}%`,
