@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { LandingPage } from "@/components/LandingPage";
 import { UnlockGames } from "@/components/UnlockGames";
@@ -7,19 +7,13 @@ import { ParallaxTimeline } from "@/components/ParallaxTimeline";
 
 const Index = () => {
   const [searchParams] = useSearchParams();
-  const skipIntro = searchParams.get("skipIntro") === "true";
-
-  const [showLanding, setShowLanding] = useState(!skipIntro);
+  const skipIntro = searchParams.get('skipIntro') === 'true';
+  
+  const [showLanding, setShowLanding] = useState(skipIntro ? false : true);
   const [showGames, setShowGames] = useState(false);
-  const [showHero, setShowHero] = useState(skipIntro);
-  const [showTimeline, setShowTimeline] = useState(skipIntro);
+  const [showHero, setShowHero] = useState(skipIntro ? true : false);
+  const [showTimeline, setShowTimeline] = useState(skipIntro ? true : false);
   const timelineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (skipIntro && timelineRef.current) {
-      timelineRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [skipIntro]);
 
   const handleLandingReady = () => {
     setShowLanding(false);
