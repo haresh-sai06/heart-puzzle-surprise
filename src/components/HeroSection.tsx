@@ -17,7 +17,7 @@ export const HeroSection = ({ onScrollPrompt }: HeroSectionProps) => {
   const [charIndex, setCharIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
-  const texts = ["Happy", "Birthday", "My Love!"];
+  const texts = ["Happy", "Birthday", "Pondati🤌🏻💗🦋🧿!"];
   const fullText = texts.join(' ');
   const typingSpeed = 75;
   const pauseDuration = 1500;
