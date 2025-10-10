@@ -97,7 +97,7 @@ export const ParallaxTimeline = () => {
       <div className="relative z-10 container mx-auto px-3 sm:px-4 md:px-6">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 space-y-2 sm:space-y-3 md:space-y-4 px-2">
           <h2 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up py-4"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             Our Eternal Journey
@@ -190,7 +190,7 @@ export const ParallaxTimeline = () => {
         {/* Final romantic message - Mobile responsive */}
         <div className="mt-16 sm:mt-24 md:mt-32 text-center space-y-4 sm:space-y-6 md:space-y-8 animate-fade-in pb-12 sm:pb-16 md:pb-20 px-2">
           <h3 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 bg-clip-text text-transparent animate-fade-in-up py-4"
             style={{ fontFamily: "'Great Vibes', cursive" }}
           >
             To Infinite Octobers Together
@@ -201,7 +201,7 @@ export const ParallaxTimeline = () => {
             you are my forever October—warm, vibrant, eternal.
           </p>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-rose-300/80 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto italic px-4">
-            Happy Birthday, My Eternal Love. Here's to countless more chapters in our story. 💕
+            Happy Birthday Wifeey!👉👈. Here's to countless more chapters in our story. 💕
           </p>
           <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 text-4xl sm:text-5xl md:text-6xl">
             <div className="animate-float-slow">💑</div>
