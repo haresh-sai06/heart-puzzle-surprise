@@ -72,7 +72,7 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
 
   const handleMonthSelect = (month: string) => {
     if (month === "October") {
-      showLevelCongrats("Perfect! Our sparks flew in the heart of autumn. Onward to the next memory! ✨");
+      showLevelCongrats("Perfect! Our sparks flew in the heart of October!. Onward to the next memory! ✨");
     } else {
       // Optional: Gentle feedback for wrong month
     }
@@ -140,12 +140,12 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
 
       <div className="container mx-auto px-4 relative z-20">
         {/* Skip button */}
-        <button
+        {/* <button
           onClick={onComplete}
           className="absolute top-0 right-4 px-4 py-2 text-white/60 hover:text-white/90 text-sm transition-colors duration-300 underline decoration-dotted"
         >
           Skip for now →
-        </button>
+        </button> */}
 
         {/* Progress bar as growing vine */}
         <div className="mb-8">
@@ -199,7 +199,7 @@ export const UnlockGames = ({ onComplete }: UnlockGamesProps) => {
                 Our Little Miracle 👶
               </h2>
               <p className="text-white/80 text-lg mb-4">
-                What is the name of our girl child?
+                What is the name of our girl child?(That we had secretly wished for)
               </p>
               <Input
                 type="text"

@@ -198,7 +198,8 @@ export const ParallaxTimeline = () => {
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed backdrop-blur-sm px-4">
             On this special October, celebrating four years of woven destinies and one extraordinary birthday. 
             From that innocent spark in 10th standard to the symphony of our shared life, 
-            you are my forever October—warm, vibrant, eternal.
+            you are my forever soulmate. Here's to us, to love that conquers all, and to countless more Octobers hand in hand. 
+            I love you, now and always.
           </p>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-rose-300/80 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto italic px-4">
             Happy Birthday Wifeey!👉👈. Here's to countless more chapters in our story. 💕
@@ -215,6 +216,9 @@ export const ParallaxTimeline = () => {
           <Link to="/album">
             <div className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-rose-400 via-pink-400 to-violet-400 text-white font-bold text-base sm:text-lg rounded-full romantic-glow active:scale-95 sm:hover:scale-105 transition-all duration-300 cursor-pointer relative z-50">
               View Album 💕
+            </div>
+            <div className="mt-2 text-sm sm:text-base text-white/80">
+              Click to view all our cherished memories in the album
             </div>
           </Link>
         </div>

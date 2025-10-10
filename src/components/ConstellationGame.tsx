@@ -190,14 +190,14 @@ export const ConstellationGame = ({ onComplete }: ConstellationGameProps) => {
       </Card>
 
       {/* Skip Button - Mobile optimized */}
-      <div className="text-center z-10 relative mt-auto pb-3 sm:pb-4">
+      {/* <div className="text-center z-10 relative mt-auto pb-3 sm:pb-4">
         <button
           onClick={handleSkip}
           className="px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-full hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl transform sm:hover:scale-105 drop-shadow-2xl text-base sm:text-lg"
         >
           Skip 💖
         </button>
-      </div>
+      </div> */}
 
       <style>{`
         @keyframes fade-in {
