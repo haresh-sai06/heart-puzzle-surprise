@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import lakesideSunset from "@/assets/lakeside-sunset.jpg";
+import lakesideSunset from "@/assets/our-pics/image8.jpeg";
 
 interface LandingPageProps {
   onReady: () => void;
